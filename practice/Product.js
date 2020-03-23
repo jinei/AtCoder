@@ -2,7 +2,7 @@
 
 // inputに入力データ全体が入る
 function Main(input) {
-  var input = input.split(" ");
+  input = input.split(" ");
   var a = parseInt(input[0],10);
   var b = parseInt(input[1],10);
 
