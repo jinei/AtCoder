@@ -10,7 +10,7 @@ function Main(input) {
   } else {
     result = "Yes";
   }
-  console.log(result)
+  console.log(result);
 }
 
 Main(require("fs").readFileSync("/dev/stdin", "utf8"));
