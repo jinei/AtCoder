@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AtCoder Form</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+  <!-- Bulma Version 0.8.x-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.8.0/css/bulma.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  <!--css読み込み -->
+  <base target="_top">
+  <?!= HtmlService.createHtmlOutputFromFile('css').getContent(); ?>
+</head>
+<body>
+
+  <section class="hero is-success is-fullheight">
+    <div class="hero-body">
+      <!-- タイトル -->
+      <div class="container has-text-centered">
+        <div class="column is-4 is-offset-4">
+          <h3 class="title has-text-black">AtCoder Form</h3>
+          <hr class="login-hr">
+          <div class="box">
+            <div class="field">
+              <div class="control">
+                <input id="title" class="input is-large" type="text" placeholder="Title" autofocus="">
+              </div>
+            </div>
+
+            <!-- 日付 -->
+            <div class="field">
+              <div class="control">
+                <input id="day" class="input is-large" type="text" placeholder="Day">
+              </div>
+            </div>
+
+            <!-- 点数 -->
+            <div class="field">
+              <div class="control">
+                <input id="score" class="input is-large" type="text" placeholder="Score">
+              </div>
+            </div>
+
+            <!-- 解いた方法 -->
+            <div class="field">
+              <div class="control">
+                <input id="method" class="input is-large" type="text" placeholder="Method">
+              </div>
+            </div>
+
+            <!-- コメント -->
+            <div class="field">
+              <div class="control">
+                <input id="comment" class="input is-large" type="text" placeholder="Comment">
+              </div>
+            </div>
+
+            <!-- 基準 -->
+            <div class="field">
+              <label class="radio">
+                <input type="radio" name="evaluation" value="#d9ead3">
+                問題なし
+              </label>
+              <label class="radio">
+                <input type="radio" name="evaluation" value="#fff2cc">
+                調べて理解した
+              </label>
+              <label class="radio">
+                <input type="radio" name="evaluation" value="#f4cccc">
+                調べても理解できない
+              </label>
+            </div>
+
+            <!-- GitHubリンク -->
+            <div class="field">
+              <div class="control">
+                <input id="git" class="input is-normal" type="text" placeholder="GitHub Link">
+              </div>
+            </div>
+
+            <!-- 問題のリンク -->
+            <div class="field">
+              <div class="control">
+                <input id="probrem" class="input is-normal" type="text" placeholder="Probrem Link">
+              </div>
+            </div>
+
+            <button class="button is-block is-info is-large is-fullwidth" onClick="input_to_sheet();">登録 <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--js読み込み-->
+  <?!= HtmlService.createHtmlOutputFromFile('js').getContent(); ?>
+
+</body>
+</html>
