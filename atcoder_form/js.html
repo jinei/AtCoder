@@ -1,0 +1,57 @@
+<script>
+
+function input_to_sheet() {
+
+  //入力データの取得
+  var title = document.getElementById("title").value;　
+  var day = document.getElementById("day").value;
+  var score = document.getElementById("score").value;
+  var method = document.getElementById("method").value;
+  var comment = document.getElementById("comment").value;
+  var git = document.getElementById("git").value;
+  var probrem = document.getElementById("probrem").value;
+
+  // ラジオ取得
+  var elements = document.getElementsByName( "evaluation" ) ;
+
+  // 選択状態の値を取得
+  var radioValue = "";
+  for ( var a="", i=elements.length; i--; ) {
+    if ( elements[i].checked ) {
+      radioValue = elements[i].value ;
+      break ;
+    }
+  }
+
+  //スプレッドシートに書き込み
+  google.script.run
+  .withFailureHandler(onFailure)
+  .withSuccessHandler(onSuccess)
+  .input_to_sheet_gs(title,day,score,method,comment,radioValue,git,probrem);
+}
+
+function onSuccess(result) {
+
+  //入力フォームを全てクリア
+  document.getElementById("title").value="";
+  document.getElementById("day").value="";
+  document.getElementById("score").value="";
+  document.getElementById("method").value="";
+  document.getElementById("comment").value="";
+  document.getElementById("git").value="";
+  document.getElementById("probrem").value="";
+  for (const element of document.getElementsByName('evaluation')) {
+    element.checked = false;
+  }
+  Swal.fire({
+  type: 'success',
+  title: '登録完了',
+  footer: '<a href="https://docs.google.com/spreadsheets/d/1rSs6c2XdQ0tFuNkatSA-iwvk5m7nsermXREYrpJu1fM/edit#gid=0"　target="_blank">スプレッドシートを開く</a>'
+  })
+}
+
+function onFailure(e) {
+  alert([e.message, e.stack]);
+}
+
+</script>
