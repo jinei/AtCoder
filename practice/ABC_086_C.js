@@ -1,45 +1,31 @@
-// ABC 086
+// ABC 085
 
 // inputに入力データ全体が入る
 function Main(input) {
-  var arr = input.split("\n");
-  var x = 0;
-  var y = 0;
-  var result = "Yes";
-  var before_tmp = 0;
-  for(var i=1;i<arr.length;i++) {
-    var tmp = arr[i].split(" ");
-    var N = parseInt(tmp[0],10); //最初から何秒目
-    var x_range = check(x,parseInt(tmp[1],10)); //現在地から行く地点までの差 x
-    var y_range = check(y,parseInt(tmp[2],10)); //現在地から行く地点までの差 y
-    N -= before_tmp; //今回移動する秒数
+  input = input.split("\n");
 
-    // 時間は余っているが、到着地点に達した場合
-    if(x_range+y_range < N) {
+  const N = parseInt(input[0],10); //行数
+  const arr = input.slice(1,N+1); //配列の[1]から最後まで
+  var flag = 0; //0がYes 1がNo
 
-      // 残り時間を持て余せない場合はNo
-      if(parseInt(N-(x_range+y_range),10) % 2 != 0)result = "No";
+  // 要素分繰り返す
+  arr.forEach(function(value,index) {
+    var t = parseInt(value.split(" ")[0],10); //時間
+    var x = parseInt(value.split(" ")[1],10); //x位置
+    var y = parseInt(value.split(" ")[2],10); //y位置
+    var sum = x + y; //xとyの合計位置
 
-      // 時間が足りない場合
-    } else if(x_range+y_range > N) {
-      result = "No";
+    if(t >= sum && sum % 2 == t % 2) {
+      flag += 0;
+    } else {
+      flag += 1;
     }
-
-    x = tmp[1];
-    y = tmp[2];
-    before_tmp = N;
-  }
-  console.log(result);
-}
-
-function check(before,after) {
-
-  // プラス方向に進んだ場合
-  if(before < after) {
-    return after - before;
+  })
+  if(flag == 0) {
+    console.log("Yes")
   } else {
-    return before - after;
+    console.log("No")
   }
-};
+}
 
 Main(require("fs").readFileSync("/dev/stdin", "utf8"));
